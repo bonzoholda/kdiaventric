@@ -1,0 +1,29 @@
+import { ethers } from "ethers";
+async function main() {
+  const provider = new ethers.JsonRpcProvider("https://bsc-testnet-rpc.publicnode.com");
+  const code = await provider.getCode("0xc11AE0e7DEB88c951a91233C75C1Dc99E8Bf6df8");
+  // Find all PUSH4 opcodes (0x63)
+  const buf = Buffer.from(code.slice(2), "hex");
+  let selectors = [];
+  for(let i = 0; i < buf.length; i++) {
+    if(buf[i] === 0x63) {
+      const selector = buf.slice(i+1, i+5).toString("hex");
+      selectors.push("0x" + selector);
+    }
+  }
+  // deduplicate
+  selectors = [...new Set(selectors)];
+  
+  for(let sel of selectors) {
+    try {
+      const res = await fetch("https://raw.githubusercontent.com/ethereum-lists/4bytes/master/signatures/" + sel);
+      if(res.ok) {
+        const text = await res.text();
+        console.log(sel, text.trim());
+      } else {
+        console.log(sel, "Unknown");
+      }
+    } catch(e) {}
+  }
+}
+main();

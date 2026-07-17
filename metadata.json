@@ -1,0 +1,6 @@
+{
+  "name": "KDIA Ventric",
+  "description": "KDIA Ventric Matrix Affiliate Portal with 3-level Referral and Monoline Matrix testnet smart contracts, treasury live stats, and real-time on-chain transaction logs console.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

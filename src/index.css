@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base Body Style for Soft Neumorphic Dark Background */
+body {
+  background-color: #0c0b0a !important;
+  background-image: radial-gradient(circle at 50% 25%, #2a1315 0%, #0c0b0a 100%) !important;
+  color: #ebeae6;
+}
+
+/* Neumorphic Extruded Card (Standard Elevation) - Redesigned for ultra-smooth premium dark morphism */
+.neu-card {
+  background: linear-gradient(135deg, rgba(14, 25, 30, 0.82) 0%, rgba(10, 12, 14, 0.92) 100%) !important;
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: 
+    0 24px 50px -12px rgba(0, 0, 0, 0.95), 
+    0 0 35px rgba(6, 182, 212, 0.08), 
+    inset 0 1.5px 0px rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(6, 182, 212, 0.25) !important;
+  border-radius: 0.5rem; /* Cozy lower-curvature roundness matching boxy style */
+}
+
+/* Neumorphic Inset Card (Sunk/Pressed) - Redesigned to flat clean card style for simplicity and cleanliness */
+.neu-card-inset {
+  background-color: rgba(10, 14, 18, 0.65) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(6, 182, 212, 0.14) !important;
+  border-radius: 0.375rem;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.65), 
+    0 1px 0px rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Neumorphic Button (Extruded Default, Presses on active) - Redesigned for ultra-premium simple modern luxury */
+.neu-btn {
+  background: linear-gradient(135deg, rgba(20, 32, 38, 0.9) 0%, rgba(11, 15, 18, 0.96) 100%) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.7), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(6, 182, 212, 0.16) !important;
+  border-radius: 0.375rem; /* Cozy boxy shape */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.neu-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(28, 45, 54, 0.96) 0%, rgba(15, 20, 24, 0.98) 100%) !important;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.8), 
+    0 0 12px rgba(6, 182, 212, 0.2), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(6, 182, 212, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+.neu-btn:active:not(:disabled), .neu-btn-active {
+  background: rgba(8, 12, 14, 0.98) !important;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.85), 
+    0 0 4px rgba(6, 182, 212, 0.15) !important;
+  border-color: rgba(6, 182, 212, 0.12) !important;
+  transform: translateY(1px);
+}
+
+.neu-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  background: rgba(14, 18, 20, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.01) !important;
+}
+
+/* Neumorphic Accent Button (Buy Matrix, Squeeze, etc.) - Royal Biru Toska (Cyan to Teal) Velvet Luxury */
+.neu-btn-accent {
+  background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%) !important;
+  box-shadow: 
+    0 4px 15px rgba(6, 182, 212, 0.3), 
+    0 0 20px rgba(20, 184, 166, 0.12), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 0.375rem; /* Cozy boxy shape */
+  color: #0c0b0a !important;
+  font-weight: 800;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+}
+
+.neu-btn-accent:hover:not(:disabled) {
+  background: linear-gradient(135deg, #22d3ee 0%, #2dd4bf 100%) !important;
+  box-shadow: 
+    0 6px 22px rgba(34, 211, 238, 0.45), 
+    0 0 25px rgba(45, 212, 191, 0.22), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-1.5px);
+}
+
+.neu-btn-accent:active:not(:disabled), .neu-btn-accent-active {
+  background: linear-gradient(135deg, #0891b2 0%, #0d9488 100%) !important;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(1px);
+}
+
+/* Neumorphic Green Accent Button (Join Vesting Pool, Claim Matured, etc.) - Royal Biru Toska (Cyan to Emerald) Imperial Luxury */
+.neu-btn-green {
+  background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%) !important;
+  box-shadow: 
+    0 4px 15px rgba(6, 182, 212, 0.25), 
+    0 0 20px rgba(16, 185, 129, 0.12), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 0.375rem;
+  color: #0c0b0a !important;
+  font-weight: 800;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+}
+
+.neu-btn-green:hover:not(:disabled) {
+  background: linear-gradient(135deg, #22d3ee 0%, #34d399 100%) !important;
+  box-shadow: 
+    0 6px 22px rgba(34, 211, 238, 0.4), 
+    0 0 25px rgba(52, 211, 153, 0.2), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-1.5px);
+}
+
+.neu-btn-green:active:not(:disabled) {
+  background: linear-gradient(135deg, #0891b2 0%, #059669 100%) !important;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(1px);
+}
+
+/* Neumorphic Blue Accent Button (Influencer Registration) - Royal Biru Toska (Cyan to Deep Sky) Imperial Luxury */
+.neu-btn-blue {
+  background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%) !important;
+  box-shadow: 
+    0 4px 15px rgba(6, 182, 212, 0.25), 
+    0 0 20px rgba(14, 165, 233, 0.12), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 0.375rem;
+  color: #0c0b0a !important;
+  font-weight: 800;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+}
+
+.neu-btn-blue:hover:not(:disabled) {
+  background: linear-gradient(135deg, #22d3ee 0%, #38bdf8 100%) !important;
+  box-shadow: 
+    0 6px 22px rgba(34, 211, 238, 0.4), 
+    0 0 25px rgba(56, 189, 248, 0.2), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-1.5px);
+}
+
+.neu-btn-blue:active:not(:disabled) {
+  background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%) !important;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(1px);
+}
+
+/* Neumorphic Inputs (Soft Sunk/Pressed Fields) */
+.neu-input {
+  background: #0d0c0b !important;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.8), inset -3px -3px 6px rgba(255, 255, 255, 0.01) !important;
+  border: 1px solid rgba(255, 255, 255, 0.02) !important;
+  outline: none;
+  border-radius: 0.375rem; /* Boxy shape matching user request */
+  transition: all 0.2s ease-in-out;
+}
+
+.neu-input:focus {
+  border: 1px solid rgba(255, 51, 85, 0.25) !important;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 51, 85, 0.12) !important;
+}
+
+/* Neumorphic Soft Circular Ring (For avatars, icons, badges) */
+.neu-circle {
+  border-radius: 9999px;
+  background: #191817;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.55), -3px -3px 8px rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.neu-circle-inset {
+  border-radius: 9999px;
+  background-color: rgba(13, 12, 11, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0c0b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #211f1e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #322f2c;
+}
+
+
