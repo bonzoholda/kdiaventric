@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Link as LinkIcon, Copy, Check, Gift, Layers, Calendar, DollarSign, Award, ArrowUpRight, History } from 'lucide-react';
+import { Users, Link as LinkIcon, Copy, Check, Gift, Layers, Coins } from 'lucide-react';
 import { Language, ReferralLevelInfo, WalletState } from '../types';
 import { translations } from '../translations';
 
@@ -48,165 +48,164 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
   const totalDownlines = levels.reduce((acc, curr) => acc + curr.count, 0);
 
   return (
-    <div className="neu-card p-6 relative overflow-hidden border-none" id="affiliate-hub-panel">
-      <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-rose-500/5 blur-3xl"></div>
+    <div className="neu-card p-6 sm:p-8 relative overflow-hidden border border-emerald-500/20 bg-slate-900/40 backdrop-blur-md rounded-xl select-none" id="affiliate-hub-panel">
+      <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
 
-      {/* Title */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800/60 pb-5 gap-4">
-        <div>
-          <h2 className="text-lg font-bold text-white flex items-center space-x-2">
-            <Users className="h-5 w-5 text-rose-500" />
-            <span>{t.referralTitle}</span>
+      {/* Header & Main Stats */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800/40 pb-5 gap-4">
+        <div className="space-y-1">
+          <h2 className="text-md font-extrabold text-white flex items-center space-x-2.5 tracking-tight font-display">
+            <Users className="h-5 w-5 text-emerald-400 animate-pulse" />
+            <span className="text-emerald-400">{t.referralTitle}</span>
             {isRefreshing && (
-              <span className="flex items-center space-x-1 ml-2 text-[10px] font-mono text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded animate-pulse">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-ping"></span>
+              <span className="flex items-center space-x-1 text-[8px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded animate-pulse">
+                <span className="h-1 w-1 rounded-full bg-emerald-500"></span>
                 <span>SYNCING...</span>
               </span>
             )}
           </h2>
-          <p className="mt-1 text-xs text-slate-400">
+          <p className="text-[11px] text-slate-400 max-w-xl">
             {t.referralSubtitle}
           </p>
         </div>
 
-        {/* Downline count summary */}
-        <div className="flex items-center space-x-4 self-start md:self-auto">
-          <div className="neu-card-inset px-3 py-1.5 border-none">
-            <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">{t.referralCount}</span>
-            <span className={`font-mono text-xs font-bold text-rose-400 ml-2 ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`}>
+        {/* Downlines Summary */}
+        <div className="flex items-center space-x-4 self-start md:self-auto font-mono text-[10px]">
+          <div className="bg-slate-950/40 px-3.5 py-2 rounded-lg border border-slate-850">
+            <span className="text-slate-500 font-bold uppercase">{t.referralCount}</span>
+            <span className={`text-emerald-400 ml-2 font-black ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`}>
               {totalDownlines} Downlines
             </span>
           </div>
-          <div className="neu-card-inset px-3 py-1.5 border-none">
-            <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">Total Earnings</span>
-            <span className={`font-mono text-xs font-bold text-emerald-400 ml-2 ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`}>
-              ${totalEarnings.toFixed(2)} USDT
+          <div className="bg-slate-950/40 px-3.5 py-2 rounded-lg border border-slate-850">
+            <span className="text-slate-500 font-bold uppercase">Total Earnings</span>
+            <span className={`text-amber-400 ml-2 font-black ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`}>
+              ${totalEarnings.toLocaleString('en-US', { minimumFractionDigits: 2 })} USDT
             </span>
           </div>
         </div>
       </div>
 
-      {/* Row of level summary widgets and pending rewards */}
+      {/* 3-Levels breakdown cards */}
       <div className="mt-6 grid gap-4 md:grid-cols-3">
-        
         {/* Level 1 Card */}
-        <div
-          className="text-left rounded-md p-4 transition-all border border-transparent neu-card-inset"
-        >
-          <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold block">{t.level1}</span>
-          <span className={`text-2xl sm:text-3xl font-display font-black text-rose-100/90 hover:text-white transition-all duration-300 block mt-1 tracking-tight drop-shadow-[0_0_8px_rgba(244,63,94,0.15)] ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-level1-count">
-            {levels[0]?.count || 0} <span className="text-xs font-semibold text-slate-400">Users</span>
+        <div className="bg-slate-950/40 p-4 rounded-lg border border-slate-850 relative">
+          <span className="text-[9px] font-mono uppercase text-emerald-400 font-extrabold tracking-wider block">{t.level1}</span>
+          <span className={`text-xl sm:text-2xl font-display font-black text-slate-200 mt-1 block ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-level1-count">
+            {levels[0]?.count || 0} <span className="text-xs font-semibold text-slate-500">Users</span>
           </span>
         </div>
 
         {/* Level 2 Card */}
-        <div
-          className="text-left rounded-md p-4 transition-all border border-transparent neu-card-inset"
-        >
-          <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold block">{t.level2}</span>
-          <span className={`text-2xl sm:text-3xl font-display font-black text-rose-100/90 hover:text-white transition-all duration-300 block mt-1 tracking-tight drop-shadow-[0_0_8px_rgba(244,63,94,0.15)] ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-level2-count">
-            {levels[1]?.count || 0} <span className="text-xs font-semibold text-slate-400">Users</span>
+        <div className="bg-slate-950/40 p-4 rounded-lg border border-slate-850 relative">
+          <span className="text-[9px] font-mono uppercase text-emerald-400 font-extrabold tracking-wider block">{t.level2}</span>
+          <span className={`text-xl sm:text-2xl font-display font-black text-slate-200 mt-1 block ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-level2-count">
+            {levels[1]?.count || 0} <span className="text-xs font-semibold text-slate-500">Users</span>
           </span>
         </div>
 
         {/* Level 3 Card */}
-        <div
-          className="text-left rounded-md p-4 transition-all border border-transparent neu-card-inset"
-        >
-          <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold block">{t.level3}</span>
-          <span className={`text-2xl sm:text-3xl font-display font-black text-rose-100/90 hover:text-white transition-all duration-300 block mt-1 tracking-tight drop-shadow-[0_0_8px_rgba(244,63,94,0.15)] ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-level3-count">
-            {levels[2]?.count || 0} <span className="text-xs font-semibold text-slate-400">Users</span>
+        <div className="bg-slate-950/40 p-4 rounded-lg border border-slate-850 relative">
+          <span className="text-[9px] font-mono uppercase text-emerald-400 font-extrabold tracking-wider block">{t.level3}</span>
+          <span className={`text-xl sm:text-2xl font-display font-black text-slate-200 mt-1 block ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-level3-count">
+            {levels[2]?.count || 0} <span className="text-xs font-semibold text-slate-500">Users</span>
           </span>
         </div>
-
       </div>
 
-      {/* Three Bonus Streams Breakdown */}
+      {/* Bonus Streams breakdown */}
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        {/* Vesting Bonus Stream */}
-        <div className="neu-card-inset p-4 rounded-md border-none flex flex-col justify-between bg-slate-950/20">
+        {/* Bonus Vesting */}
+        <div className="bg-slate-950/40 p-4 rounded-lg border border-slate-850 flex flex-col justify-between space-y-4">
           <div className="flex justify-between items-start">
-            <div>
-              <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold block">1. Bonus Vesting (Linear)</span>
-              <span className={`text-xl font-display font-black text-rose-400 drop-shadow-[0_0_10px_rgba(244,63,94,0.2)] block mt-1 tracking-tight ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-stream-vesting">
-                ${totalVestingBonus.toFixed(2)} <span className="text-xs font-semibold text-cyan-400">USDT</span>
+            <div className="space-y-0.5">
+              <span className="text-[9px] font-mono uppercase text-emerald-400 font-extrabold block">1. Linear Vesting Bonus</span>
+              <span className={`text-lg font-display font-black text-emerald-400 block ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-stream-vesting">
+                ${totalVestingBonus.toLocaleString('en-US', { minimumFractionDigits: 2 })} <span className="text-[10px] font-semibold text-slate-500">USDT</span>
               </span>
             </div>
-            <span className="h-5 w-5 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 font-mono text-[10px] font-bold">L1-3</span>
+            <span className="h-5 w-5 rounded bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-mono text-[9px] font-extrabold border border-emerald-500/20">L1-3</span>
           </div>
-          <p className="text-[10px] text-slate-500 mt-2 leading-relaxed">
-            {language === 'en' ? 'Calculated from LinearRewardDistributed events when downlines trigger linear vesting payouts.' : 'Dihitung dari event LinearRewardDistributed saat downline memicu pembayaran linear vesting.'}
+          <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+            {language === 'en' 
+              ? 'Calculated from LinearRewardDistributed events when downlines trigger linear vesting payouts.' 
+              : 'Dihitung dari event LinearRewardDistributed saat downline memicu pembayaran linear vesting.'}
           </p>
         </div>
 
-        {/* Matrix Bonus Stream */}
-        <div className="neu-card-inset p-4 rounded-md border-none flex flex-col justify-between bg-slate-950/20">
+        {/* Bonus Matrix */}
+        <div className="bg-slate-950/40 p-4 rounded-lg border border-slate-850 flex flex-col justify-between space-y-4">
           <div className="flex justify-between items-start">
-            <div>
-              <span className="text-[10px] font-mono uppercase text-rose-300 font-bold block">2. Bonus Matrix ($0.50)</span>
-              <span className={`text-xl font-display font-black text-rose-400 drop-shadow-[0_0_10px_rgba(244,63,94,0.2)] block mt-1 tracking-tight ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-stream-matrix">
-                ${totalMatrixBonus.toFixed(2)} <span className="text-xs font-semibold text-rose-450/70">USDT</span>
+            <div className="space-y-0.5">
+              <span className="text-[9px] font-mono uppercase text-emerald-400 font-extrabold block">2. Matrix Bonus ($0.50)</span>
+              <span className={`text-lg font-display font-black text-emerald-400 block ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-stream-matrix">
+                ${totalMatrixBonus.toLocaleString('en-US', { minimumFractionDigits: 2 })} <span className="text-[10px] font-semibold text-slate-500">USDT</span>
               </span>
             </div>
-            <span className="h-5 w-5 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 font-mono text-[10px] font-bold">$0.5</span>
+            <span className="h-5 w-5 rounded bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-mono text-[9px] font-extrabold border border-emerald-500/20">$0.5</span>
           </div>
-          <p className="text-[10px] text-slate-500 mt-2 leading-relaxed">
-            {language === 'en' ? `Directly tracks DirectMatrixBonusPaid events ($0.50 USDT per position bought by direct referrals).` : `Melacak event DirectMatrixBonusPaid senilai $0.50 USDT per pembelian posisi oleh referral langsung.`}
+          <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+            {language === 'en' 
+              ? 'Directly tracks DirectMatrixBonusPaid events ($0.50 USDT per position bought by direct referrals).' 
+              : 'Melacak event DirectMatrixBonusPaid senilai $0.50 USDT per pembelian posisi oleh referral langsung.'}
           </p>
         </div>
 
-        {/* Squeeze Bonus Stream */}
-        <div className="neu-card-inset p-4 rounded-md border-none flex flex-col justify-between bg-slate-950/20">
+        {/* Bonus Squeeze */}
+        <div className="bg-slate-950/40 p-4 rounded-lg border border-slate-850 flex flex-col justify-between space-y-4">
           <div className="flex justify-between items-start">
-            <div>
-              <span className="text-[10px] font-mono uppercase text-rose-300 font-bold block">3. Bonus Squeeze ($0.10)</span>
-              <span className={`text-xl font-display font-black text-rose-400 drop-shadow-[0_0_10px_rgba(244,63,94,0.2)] block mt-1 tracking-tight ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-stream-squeeze">
-                ${totalSqueezeBonus.toFixed(2)} <span className="text-xs font-semibold text-rose-450/70">USDT</span>
+            <div className="space-y-0.5">
+              <span className="text-[9px] font-mono uppercase text-emerald-400 font-extrabold block">3. Squeezer Bonus ($0.10)</span>
+              <span className={`text-lg font-display font-black text-emerald-400 block ${isRefreshing ? 'opacity-60 animate-pulse' : ''}`} id="ref-stream-squeeze">
+                ${totalSqueezeBonus.toLocaleString('en-US', { minimumFractionDigits: 2 })} <span className="text-[10px] font-semibold text-slate-500">USDT</span>
               </span>
             </div>
-            <span className="h-5 w-5 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 font-mono text-[10px] font-bold">$0.1</span>
+            <span className="h-5 w-5 rounded bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-mono text-[9px] font-extrabold border border-emerald-500/20">$0.1</span>
           </div>
-          <p className="text-[10px] text-slate-500 mt-2 leading-relaxed">
-            {language === 'en' ? 'Tracks FIFO PositionMaturedLog events with SQUEEZE_INSTANT_PAYOUT cross-referenced to sponsor.' : 'Melacak event FIFO PositionMaturedLog dengan tipe SQUEEZE_INSTANT_PAYOUT yang dirujuk silang ke sponsor.'}
+          <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+            {language === 'en' 
+              ? 'Tracks FIFO PositionMaturedLog events with SQUEEZE_INSTANT_PAYOUT cross-referenced to sponsor.' 
+              : 'Melacak event FIFO PositionMaturedLog dengan tipe SQUEEZE_INSTANT_PAYOUT yang dirujuk silang ke sponsor.'}
           </p>
         </div>
       </div>
 
-      {/* Referral Link copy-paste module */}
-      <div className="mt-6 neu-card-inset p-5 border-none">
-        <h3 className="text-sm font-semibold text-white flex items-center space-x-1.5">
-          <LinkIcon className="h-4 w-4 text-rose-400" />
-          <span>{t.referralLinkCard}</span>
-        </h3>
-        <p className="text-[11px] text-slate-400 mt-1 leading-normal">
-          {t.referralLinkDesc}
-        </p>
+      {/* Copyable referral Link segment */}
+      <div className="mt-6 p-5 rounded-lg bg-slate-950/40 border border-slate-850 space-y-4">
+        <div className="space-y-1">
+          <h3 className="text-sm font-semibold text-slate-200 flex items-center space-x-1.5">
+            <LinkIcon className="h-4 w-4 text-emerald-400" />
+            <span>{t.referralLinkCard}</span>
+          </h3>
+          <p className="text-[11px] text-slate-400 leading-normal">
+            {t.referralLinkDesc}
+          </p>
+        </div>
 
-        <div className="mt-4 flex flex-col sm:flex-row items-stretch gap-3">
-          <div className="flex-1 rounded-md bg-[#111319] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5)] px-4 py-3 font-mono text-xs text-slate-300 overflow-x-auto whitespace-nowrap scrollbar-none select-all flex items-center">
+        <div className="flex flex-col sm:flex-row items-stretch gap-3">
+          <div className="flex-1 rounded-lg bg-[#0a0c14] border border-slate-800 px-4 py-3 font-mono text-xs text-slate-300 overflow-x-auto whitespace-nowrap scrollbar-none select-all flex items-center">
             {referralLink}
           </div>
           
           <button
             onClick={handleCopyLink}
-            className="neu-btn text-cyan-400 hover:text-cyan-300 font-bold px-5 py-3 text-xs flex items-center justify-center space-x-1.5 transition-colors border-none cursor-pointer"
+            className="px-5 py-3 font-display font-black tracking-wider text-xs rounded-lg border-none cursor-pointer transition-all duration-300 flex items-center justify-center space-x-1.5 bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 hover:from-emerald-400 hover:to-teal-300 shadow-lg shadow-emerald-500/10 hover:scale-[1.01] active:scale-[0.99]"
             id="copy-referral-link-btn"
           >
             {copied ? (
               <>
-                <Check className="h-4.5 w-4.5" />
+                <Check className="h-4 w-4" />
                 <span>{t.copied}</span>
               </>
             ) : (
               <>
-                <Copy className="h-4.5 w-4.5" />
+                <Copy className="h-4 w-4" />
                 <span>{t.copyLinkBtn}</span>
               </>
             )}
           </button>
         </div>
       </div>
-
 
     </div>
   );

@@ -16,7 +16,8 @@ import {
   Sliders, 
   Shield,
   Cpu,
-  RefreshCw
+  RefreshCw,
+  BookOpen
 } from 'lucide-react';
 import { useDisconnect } from 'wagmi';
 import { Language, WalletState, AppNotification } from '../types';
@@ -95,32 +96,62 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rose-900/50 bg-[#2b0000] bg-gradient-to-b from-[#4a0000] via-[#2b0000] to-[#0a0505] backdrop-blur-xl shadow-[0_4px_30px_rgba(150,0,0,0.4)] w-full">
+    <header className="sticky top-0 z-50 border-b border-slate-800/50 bg-[#0B0F19]/80 backdrop-blur-xl shadow-2xl w-full">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-2 xs:px-3 sm:px-6 lg:px-8 py-2 relative overflow-visible">
         
-        {/* Left Side: Logo (Sleek, Left-Aligned, Compact) */}
-        <div className="flex items-center min-w-0 shrink-0 mr-1 sm:mr-4">
-          <img 
-            src="/kdiaventric_logo.png" 
-            alt="KDIA VENTRIC Logo" 
-            className="w-auto h-[18px] xs:h-[22px] sm:h-[32px] md:h-[38px] object-contain transition-all duration-300 py-0.5" 
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              const fallback = e.currentTarget.parentElement?.querySelector('.fallback-container');
-              if (fallback) fallback.classList.remove('hidden');
-            }} 
-          />
-          {/* Fallback container if kdiaventric_logo.png fails to load */}
-          <div className="fallback-container hidden flex flex-col items-start justify-center">
-            <div className="flex items-center space-x-1.5">
-              <span className="font-sans text-[11px] sm:text-base font-black tracking-tight text-white leading-none">
-                {t.brandName}
-              </span>
-              <span className="rounded bg-rose-500/10 px-1 py-0.5 text-[7px] sm:text-[8px] font-semibold text-rose-400 leading-none">
-                v2.0
-              </span>
+        {/* Left Side: Logo & Prominent TESTNET Badge */}
+        <div className="flex items-center min-w-0 shrink-0 mr-1 sm:mr-4 space-x-2 sm:space-x-3">
+          <div className="flex items-center">
+            <img 
+              src="/kdiaventric_logo.png" 
+              alt="KDIA VENTRIC Logo" 
+              className="w-auto h-[18px] xs:h-[22px] sm:h-[32px] md:h-[38px] object-contain transition-all duration-300 py-0.5 filter drop-shadow-[0_0_10px_rgba(16,185,129,0.15)]" 
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const fallback = e.currentTarget.parentElement?.querySelector('.fallback-container');
+                if (fallback) fallback.classList.remove('hidden');
+              }} 
+            />
+            {/* Fallback container if kdiaventric_logo.png fails to load */}
+            <div className="fallback-container hidden flex flex-col items-start justify-center">
+              <div className="flex items-center space-x-1.5">
+                <span className="font-sans text-[11px] sm:text-base font-black tracking-tight text-white leading-none">
+                  {t.brandName}
+                </span>
+                <span className="rounded bg-emerald-500/10 px-1 py-0.5 text-[7px] sm:text-[8px] font-semibold text-emerald-400 leading-none">
+                  v2.0
+                </span>
+              </div>
             </div>
           </div>
+
+          {/* Prominent Amber/Yellow TESTNET Badge */}
+          <span className="rounded-full bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 text-[8px] sm:text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest animate-pulse leading-none select-none shrink-0">
+            TESTNET
+          </span>
+        </div>
+
+        {/* Center/Right Desktop Navigation Tabs */}
+        <div className="hidden md:flex items-center space-x-6 ml-auto mr-6 font-mono text-xs font-bold uppercase tracking-wider select-none shrink-0">
+          <a 
+            href="https://icykardia.netlify.app" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center space-x-1.5"
+          >
+            <Cpu className="h-4 w-4 animate-pulse" />
+            <span>Mining Hub</span>
+          </a>
+          <button 
+            onClick={() => {
+              const btn = document.getElementById('open-welcome-modal-btn');
+              if (btn) btn.click();
+            }}
+            className="text-slate-300 hover:text-emerald-400 transition-colors flex items-center space-x-1.5 cursor-pointer"
+          >
+            <BookOpen className="h-4 w-4" />
+            <span>Docs</span>
+          </button>
         </div>
 
         {/* Right Side: Action Controls (Elegant, Compact, Single-line, No Wrapping) */}
@@ -237,9 +268,9 @@ export const Header: React.FC<HeaderProps> = ({
                       >
                         <div className="mt-0.5 border-none">
                           {notif.type === 'success' || notif.type === 'matrix' || notif.type === 'referral' ? (
-                            <CheckCircle2 className="h-4 w-4 text-rose-400" />
+                            <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                           ) : (
-                            <span className="inline-block h-2 w-2 rounded-full bg-rose-400" />
+                            <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
                           )}
                         </div>
                         <div className="flex-1">
@@ -267,10 +298,13 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Web3 Wallet Connection Selector (Hide balance for high density) */}
-          <div className="flex items-center gap-2 justify-end shrink-0 overflow-visible">
-            {/* @ts-ignore */}
-            <w3m-button balance="hide" size="sm" />
+          {/* Web3 Wallet Connection Selector (Hide balance for high density) with Premium Glowing Web3 Styling */}
+          <div className="flex items-center gap-2 justify-end shrink-0 overflow-visible relative group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+            <div className="relative">
+              {/* @ts-ignore */}
+              <w3m-button balance="hide" size="sm" />
+            </div>
           </div>
 
         </div>

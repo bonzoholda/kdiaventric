@@ -2878,6 +2878,65 @@ const generateDeterministicMockData = (walletAddress: string) => {
           </div>
         </div>
 
+        {/* Protocol Overview Row (Top Stats) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 select-none">
+          {/* Card 1: Initial Allocation Pool */}
+          <div className="neu-card p-6 relative overflow-hidden flex flex-col justify-between border border-emerald-500/20 bg-slate-900/40 backdrop-blur-md rounded-xl shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/30 transition-all duration-300">
+            <div className="absolute top-0 right-0 h-24 w-24 rounded-full bg-emerald-500/5 blur-xl pointer-events-none"></div>
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                {language === 'en' ? 'Initial Allocation Pool' : 'Kolam Alokasi Awal'}
+              </span>
+              <div className="text-2xl sm:text-3xl font-display font-black text-emerald-400 mt-2 tracking-tight">
+                {treasury.kdiaReserve.toLocaleString('en-US', { minimumFractionDigits: 2 })}{' '}
+                <span className="text-xs font-semibold text-slate-500">KDIA</span>
+              </div>
+              <p className="text-[10px] text-slate-400 mt-1">
+                {language === 'en' ? 'Available of 100,000 KDIA Total' : 'Tersedia dari Total 100.000 KDIA'}
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2: User USDT Earnings */}
+          <div className="neu-card p-6 relative overflow-hidden flex flex-col justify-between border border-emerald-500/20 bg-slate-900/40 backdrop-blur-md rounded-xl shadow-xl hover:shadow-amber-500/5 hover:border-amber-500/30 transition-all duration-300">
+            <div className="absolute top-0 right-0 h-24 w-24 rounded-full bg-amber-500/5 blur-xl pointer-events-none"></div>
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                {language === 'en' ? 'User USDT Earnings' : 'Pendapatan USDT Pengguna'}
+              </span>
+              <div className="text-2xl sm:text-3xl font-display font-black text-amber-400 mt-2 tracking-tight">
+                ${totalEarnings.toLocaleString('en-US', { minimumFractionDigits: 2 })}{' '}
+                <span className="text-xs font-semibold text-slate-500">USDT</span>
+              </div>
+              <p className="text-[10px] text-slate-400 mt-1">
+                {language === 'en' ? 'Real yield commissions paid' : 'Komisi hasil nyata dibayarkan'}
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3: Network Status */}
+          <div className="neu-card p-6 relative overflow-hidden flex flex-col justify-between border border-emerald-500/20 bg-slate-900/40 backdrop-blur-md rounded-xl shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/30 transition-all duration-300">
+            <div className="absolute top-0 right-0 h-24 w-24 rounded-full bg-emerald-500/5 blur-xl pointer-events-none"></div>
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                {language === 'en' ? 'Network Status' : 'Status Jaringan'}
+              </span>
+              <div className="flex items-center space-x-2.5 mt-3">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+                </span>
+                <span className="text-lg font-display font-bold text-slate-200">
+                  {language === 'en' ? 'BSC Testnet Active' : 'BSC Testnet Aktif'}
+                </span>
+              </div>
+              <p className="text-[10px] text-slate-400 mt-2">
+                {language === 'en' ? 'Smart Contract event-monitoring live' : 'Pemantauan event Smart Contract aktif'}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Beautiful Glassmorphic Detail Modal Popup */}
         {isWelcomeModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
@@ -3390,35 +3449,48 @@ const generateDeterministicMockData = (walletAddress: string) => {
         )}
 
         {/* Smart Contract reference code */}
-        <div id="smart-contract-ref" className="rounded-md border border-slate-800 bg-slate-900/10 p-6 backdrop-blur-sm space-y-4">
+        <div id="smart-contract-ref" className="rounded-xl border border-slate-800 bg-slate-900/10 p-6 backdrop-blur-sm space-y-4">
           <h3 className="text-base font-bold text-white flex items-center space-x-2">
-            <Shield className="h-4.5 w-4.5 text-indigo-400" />
+            <Shield className="h-4.5 w-4.5 text-emerald-400" />
             <span>Smart Contract Architectonics Reference</span>
           </h3>
           <p className="text-xs text-slate-400 leading-relaxed">
             {language === 'en'
-              ? 'The smart contract architecture on this KDIA Ventric dashboard is designed with a Modular, Interconnected, and Semi-Deflationary approach, focusing on execution efficiency and secure fund flows backed by the core asset Bitcoin ($BTCB$).'
-              : 'Arsitektur smart contract pada dashboard KDIA Ventric ini dirancang dengan pendekatan Modular, Interconnected, dan Semi-Deflationary yang berfokus pada efisiensi eksekusi serta keamanan aliran dana berbasis aset utama Bitcoin ($BTCB$).'}
+              ? 'The smart contract architecture on this KDIA Ventric dashboard is designed with a Modular, Interconnected, and Semi-Deflationary approach, focusing on execution efficiency and secure fund flows backed by the core asset Bitcoin (BTCB).'
+              : 'Arsitektur smart contract pada dashboard KDIA Ventric ini dirancang dengan pendekatan Modular, Interconnected, dan Semi-Deflationary yang berfokus pada efisiensi eksekusi serta keamanan aliran dana berbasis aset utama Bitcoin (BTCB).'}
           </p>
-          <div className="bg-slate-950 rounded-md p-4 border border-slate-850">
+          <div className="bg-slate-950 rounded-lg p-4 border border-slate-850">
             <span className="block font-mono text-[10px] text-slate-500 uppercase font-bold mb-1">Contract Deployment Details</span>
             <div className="grid grid-cols-1 gap-4 font-mono text-xs text-slate-400 break-all">
               <div>
                 <span className="text-slate-600 block text-[10px]">CONTROLLER ADDR</span>
-                <span className="text-rose-400 font-semibold">{controllerAddress}</span>
+                <span className="text-emerald-400 font-semibold">{controllerAddress}</span>
               </div>
               <div>
                 <span className="text-slate-600 block text-[10px]">TREASURY RESERVE</span>
-                <span className="text-rose-400 font-semibold">{treasuryReserveAddress}</span>
+                <span className="text-emerald-400 font-semibold">{treasuryReserveAddress}</span>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Anti-Bot Trust Secured Alert Box */}
+        <div className="rounded-xl border border-emerald-500/10 bg-emerald-950/10 p-5 text-center space-y-2 select-none">
+          <div className="flex items-center justify-center space-x-2 text-emerald-400">
+            <Shield className="h-4.5 w-4.5 animate-pulse" />
+            <span className="font-display font-black text-xs uppercase tracking-wider">KDIA Ventric Anti-Bot Trust Secured</span>
+          </div>
+          <p className="text-[11px] text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            {language === 'en'
+              ? 'Our decentralized smart contract utilizes on-chain entropy, micro-FIFO queues, and rate-limiting blocks to prevent MEV exploitation, flash-loan manipulation, and automated arbitrage bots. Transactions are validated directly against BNB Smart Chain Testnet nodes.'
+              : 'Smart contract terdesentralisasi kami menggunakan entropi on-chain, antrean micro-FIFO, dan pembatasan laju blok untuk mencegah eksploitasi MEV, manipulasi flash-loan, dan bot arbitrase otomatis. Transaksi divalidasi langsung terhadap node BNB Smart Chain Testnet.'}
+          </p>
+        </div>
+
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-8 mt-16">
+      <footer className="border-t border-slate-900 bg-[#07090e] py-8 mt-16">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <p className="font-mono text-[11px] text-slate-500">
             SphygmosKardiaPrime Web3 Dashboard © 2026. Designed with premium decentralized standards on BNB Smart Chain.
