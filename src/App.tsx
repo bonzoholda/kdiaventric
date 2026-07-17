@@ -2811,13 +2811,13 @@ const generateDeterministicMockData = (walletAddress: string) => {
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-8">
         
         {/* Onboarding Welcome Section */}
-        <div className="neu-card p-6 sm:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-none relative overflow-hidden bg-gradient-to-br from-[#161a24] to-[#12151b] shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="neu-card p-6 sm:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border border-emerald-500/20 relative overflow-hidden bg-gradient-to-br from-[#0c0f16] to-[#07090e] shadow-2xl rounded-xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="space-y-3 max-w-3xl z-10">
-            <span className="inline-flex items-center space-x-1.5 rounded bg-rose-500/10 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-400">
-              <Sparkles className="h-3 w-3 text-rose-400" />
+            <span className="inline-flex items-center space-x-1.5 rounded bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 border border-emerald-500/20">
+              <Sparkles className="h-3 w-3 text-emerald-400 animate-pulse" />
               <span>{language === 'en' ? 'Welcome Onboard' : 'Selamat Datang'}</span>
             </span>
             <h1 className="text-xl sm:text-2xl font-display font-black text-white tracking-tight leading-tight">
@@ -2833,7 +2833,7 @@ const generateDeterministicMockData = (walletAddress: string) => {
                     href="https://icykardia.netlify.app/" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-rose-400 hover:underline font-bold"
+                    className="text-amber-400 hover:text-amber-300 transition-colors font-bold underline"
                   >
                     KardiaMiningHub
                   </a>{' '}
@@ -2846,7 +2846,7 @@ const generateDeterministicMockData = (walletAddress: string) => {
                     href="https://icykardia.netlify.app/" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-rose-400 hover:underline font-bold"
+                    className="text-amber-400 hover:text-amber-300 transition-colors font-bold underline"
                   >
                     KardiaMiningHub
                   </a>
@@ -2859,7 +2859,7 @@ const generateDeterministicMockData = (walletAddress: string) => {
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 z-10">
             <button 
               onClick={() => setIsWelcomeModalOpen(true)}
-              className="neu-btn-accent px-5 py-3 text-xs font-black tracking-wider uppercase flex items-center justify-center space-x-2 w-full sm:w-auto"
+              className="px-5 py-3 text-xs font-display font-black tracking-wider uppercase flex items-center justify-center space-x-2 w-full sm:w-auto rounded-lg border-none bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 hover:from-emerald-400 hover:to-teal-300 shadow-lg shadow-emerald-500/10 hover:scale-[1.01] active:scale-[0.99] cursor-pointer transition-all duration-300"
               id="open-welcome-modal-btn"
             >
               <BookOpen className="h-4 w-4" />
@@ -2868,12 +2868,11 @@ const generateDeterministicMockData = (walletAddress: string) => {
             
             <a 
               href="#smart-contract-ref" 
-              className="neu-btn px-5 py-3 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-all inline-flex items-center justify-center space-x-1.5 border-none bg-slate-900/50 w-full sm:w-auto"
+              className="px-5 py-3 text-xs font-display font-bold text-slate-300 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300 inline-flex items-center justify-center space-x-1.5 border border-slate-800 rounded-lg bg-slate-900/50 w-full sm:w-auto"
             >
-              <Terminal className="h-4 w-4 text-cyan-400" />
+              <Terminal className="h-4 w-4 text-emerald-400" />
               <span>{t.viewOnBscScan}</span>
             </a>
-
 
           </div>
         </div>
@@ -2940,15 +2939,15 @@ const generateDeterministicMockData = (walletAddress: string) => {
         {/* Beautiful Glassmorphic Detail Modal Popup */}
         {isWelcomeModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
-            <div className="relative w-full max-w-3xl bg-gradient-to-br from-[#1b1e2c]/95 to-[#11141e]/98 rounded-xl border border-cyan-500/15 p-6 sm:p-8 shadow-[0_0_50px_rgba(6,182,212,0.15)] overflow-hidden my-8 max-h-[90vh] overflow-y-auto">
+            <div className="relative w-full max-w-3xl bg-gradient-to-br from-[#0c0f16]/95 to-[#07090e]/98 rounded-xl border border-emerald-500/20 p-6 sm:p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] overflow-hidden my-8 max-h-[90vh] overflow-y-auto">
               {/* Blur Decor */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
               
               {/* Close Button */}
               <button 
                 onClick={() => setIsWelcomeModalOpen(false)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-950/60 p-2 rounded-full border border-slate-800 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all cursor-pointer z-20"
+                className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-950/60 p-2 rounded-full border border-slate-800 hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all cursor-pointer z-20"
                 aria-label="Close"
                 id="close-welcome-modal-btn"
               >
@@ -2960,8 +2959,8 @@ const generateDeterministicMockData = (walletAddress: string) => {
                 
                 {/* Header */}
                 <div className="space-y-2.5 pr-8">
-                  <span className="inline-flex items-center space-x-1.5 rounded bg-rose-500/10 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-400">
-                    <Shield className="h-3.5 w-3.5 text-rose-400" />
+                  <span className="inline-flex items-center space-x-1.5 rounded bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 border border-emerald-500/20">
+                    <Shield className="h-3.5 w-3.5 text-emerald-400" />
                     <span>{language === 'en' ? 'Ecosystem Overview' : 'Ikhtisar Ekosistem'}</span>
                   </span>
                   <h2 className="text-xl sm:text-2xl font-display font-black text-white tracking-tight leading-snug">
@@ -2977,7 +2976,7 @@ const generateDeterministicMockData = (walletAddress: string) => {
                           href="https://icykardia.netlify.app/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-rose-400 hover:underline font-bold"
+                          className="text-amber-400 hover:text-amber-300 font-bold underline"
                         >
                           KardiaMiningHub
                         </a>{' '}
@@ -2990,7 +2989,7 @@ const generateDeterministicMockData = (walletAddress: string) => {
                           href="https://icykardia.netlify.app/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-rose-400 hover:underline font-bold"
+                          className="text-amber-400 hover:text-amber-300 font-bold underline"
                         >
                           KardiaMiningHub
                         </a>
@@ -3002,11 +3001,11 @@ const generateDeterministicMockData = (walletAddress: string) => {
                   {/* Flexible responsive logo wrapper with centered alignment */}
                   <div className="flex justify-center items-center pt-3 pb-1 w-full" id="kdiaventric-ecosystem-logo-container">
                     <div className="relative p-4 rounded-lg bg-slate-950/40 border border-slate-800/60 w-full max-w-sm sm:max-w-md flex justify-center items-center shadow-inner group overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-rose-500/5 to-cyan-500/5 opacity-100 group-hover:from-rose-500/10 group-hover:to-cyan-500/10 transition-all duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 to-amber-500/5 opacity-100 group-hover:from-emerald-500/10 group-hover:to-amber-500/10 transition-all duration-500 pointer-events-none" />
                       <img 
                         src="/kdiaventric_logo.png" 
                         alt="KDIA Ventric Logo" 
-                        className="max-w-full h-auto max-h-16 sm:max-h-20 object-contain filter drop-shadow-[0_0_15px_rgba(244,63,94,0.15)] transition-transform duration-500 group-hover:scale-105"
+                        className="max-w-full h-auto max-h-16 sm:max-h-20 object-contain filter drop-shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                         }}
@@ -3019,17 +3018,17 @@ const generateDeterministicMockData = (walletAddress: string) => {
 
                 {/* Section 1: Security */}
                 <div className="space-y-4">
-                  <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-rose-400 flex items-center space-x-2">
-                    <Shield className="h-4 w-4" />
+                  <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-400 flex items-center space-x-2">
+                    <Shield className="h-4 w-4 text-emerald-400" />
                     <span>{language === 'en' ? 'Why Choose the KDIA Ecosystem?' : 'Mengapa Memilih Ekosistem KDIA?'}</span>
                   </h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Security Card 1 */}
-                    <div className="bg-[#12151d] p-4.5 rounded-lg border border-slate-800/80 space-y-2 hover:border-rose-500/20 transition-all flex flex-col justify-between">
+                    <div className="bg-[#0a0d14]/60 p-4.5 rounded-lg border border-slate-800 hover:border-emerald-500/30 transition-all duration-350 flex flex-col justify-between">
                       <div className="space-y-2">
                         <h4 className="text-xs font-bold text-white uppercase tracking-wide flex items-center space-x-1.5">
-                          <span className="w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
                           <span>{language === 'en' ? 'Absolute Anti-Rugpull' : 'Anti-Rugpull Mutlak'}</span>
                         </h4>
                         <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
@@ -3041,10 +3040,10 @@ const generateDeterministicMockData = (walletAddress: string) => {
                     </div>
 
                     {/* Security Card 2 */}
-                    <div className="bg-[#12151d] p-4.5 rounded-lg border border-slate-800/80 space-y-2 hover:border-rose-500/20 transition-all flex flex-col justify-between">
+                    <div className="bg-[#0a0d14]/60 p-4.5 rounded-lg border border-slate-800 hover:border-emerald-500/30 transition-all duration-350 flex flex-col justify-between">
                       <div className="space-y-2">
                         <h4 className="text-xs font-bold text-white uppercase tracking-wide flex items-center space-x-1.5">
-                          <span className="w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
                           <span>{language === 'en' ? 'Floor Price Protection' : 'Proteksi Harga Dasar'}</span>
                         </h4>
                         <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
@@ -3056,10 +3055,10 @@ const generateDeterministicMockData = (walletAddress: string) => {
                     </div>
 
                     {/* Security Card 3 */}
-                    <div className="bg-[#12151d] p-4.5 rounded-lg border border-slate-800/80 space-y-2 hover:border-rose-500/20 transition-all flex flex-col justify-between">
+                    <div className="bg-[#0a0d14]/60 p-4.5 rounded-lg border border-slate-800 hover:border-emerald-500/30 transition-all duration-350 flex flex-col justify-between">
                       <div className="space-y-2">
                         <h4 className="text-xs font-bold text-white uppercase tracking-wide flex items-center space-x-1.5">
-                          <span className="w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
                           <span>{language === 'en' ? 'Extreme Scarcity' : 'Kelangkaan Ekstrem'}</span>
                         </h4>
                         <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
@@ -3075,17 +3074,17 @@ const generateDeterministicMockData = (walletAddress: string) => {
                 {/* Section 2: Strategy */}
                 <div className="space-y-4 pt-2">
                   <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center space-x-2">
-                    <Zap className="h-4 w-4" />
+                    <Zap className="h-4 w-4 text-amber-400" />
                     <span>{language === 'en' ? 'Choose Your Growth Strategy:' : 'Pilih Strategi Pertumbuhan Anda:'}</span>
                   </h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Strategy Card 1 */}
-                    <div className="bg-[#12151d] p-4.5 rounded-lg border border-slate-800/80 space-y-2 hover:border-amber-500/20 transition-all flex flex-col justify-between">
+                    <div className="bg-[#0a0d14]/60 p-4.5 rounded-lg border border-slate-800 hover:border-amber-500/30 transition-all duration-350 flex flex-col justify-between">
                       <div className="space-y-2">
                         <div className="flex justify-between items-center mb-1">
                           <h4 className="text-xs font-bold text-white uppercase tracking-wide">Vesting Pool</h4>
-                          <span className="text-[9px] font-mono bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-bold uppercase">20 Days</span>
+                          <span className="text-[9px] font-mono bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-bold uppercase border border-amber-500/20">20 Days</span>
                         </div>
                         <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
                           {language === 'en'
@@ -3096,11 +3095,11 @@ const generateDeterministicMockData = (walletAddress: string) => {
                     </div>
 
                     {/* Strategy Card 2 */}
-                    <div className="bg-[#12151d] p-4.5 rounded-lg border border-slate-800/80 space-y-2 hover:border-amber-500/20 transition-all flex flex-col justify-between">
+                    <div className="bg-[#0a0d14]/60 p-4.5 rounded-lg border border-slate-800 hover:border-amber-500/30 transition-all duration-350 flex flex-col justify-between">
                       <div className="space-y-2">
                         <div className="flex justify-between items-center mb-1">
                           <h4 className="text-xs font-bold text-white uppercase tracking-wide">Matrix $1</h4>
-                          <span className="text-[9px] font-mono bg-rose-500/10 text-rose-400 px-1.5 py-0.5 rounded font-bold uppercase">MicroFIFO</span>
+                          <span className="text-[9px] font-mono bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded font-bold uppercase border border-emerald-500/20">MicroFIFO</span>
                         </div>
                         <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
                           {language === 'en'
@@ -3111,11 +3110,11 @@ const generateDeterministicMockData = (walletAddress: string) => {
                     </div>
 
                     {/* Strategy Card 3 */}
-                    <div className="bg-[#12151d] p-4.5 rounded-lg border border-slate-800/80 space-y-2 hover:border-amber-500/20 transition-all flex flex-col justify-between">
+                    <div className="bg-[#0a0d14]/60 p-4.5 rounded-lg border border-slate-800 hover:border-amber-500/30 transition-all duration-350 flex flex-col justify-between">
                       <div className="space-y-2">
                         <div className="flex justify-between items-center mb-1">
                           <h4 className="text-xs font-bold text-white uppercase tracking-wide">Influencer $0</h4>
-                          <span className="text-[9px] font-mono bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded font-bold uppercase">Free</span>
+                          <span className="text-[9px] font-mono bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded font-bold uppercase border border-emerald-500/20">Free</span>
                         </div>
                         <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
                           {language === 'en'
@@ -3130,7 +3129,7 @@ const generateDeterministicMockData = (walletAddress: string) => {
                 <div className="border-t border-slate-800/60 pt-4 flex justify-end">
                   <button 
                     onClick={() => setIsWelcomeModalOpen(false)}
-                    className="neu-btn-accent px-6 py-2.5 text-xs font-bold uppercase rounded cursor-pointer"
+                    className="px-6 py-2.5 text-xs font-display font-black uppercase tracking-wider rounded-lg border-none bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 hover:from-emerald-400 hover:to-teal-300 shadow-lg shadow-emerald-500/10 hover:scale-[1.01] active:scale-[0.99] cursor-pointer transition-all duration-300"
                     id="confirm-welcome-modal-btn"
                   >
                     {language === 'en' ? 'Close & Let\'s Start' : 'Tutup & Mulai'}
